@@ -1,4 +1,4 @@
-package grooveberry_server.client.net;
+package grooveberry_consoleclient.client.net;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,4 +1,8 @@
-package grooveberry_server;
+package grooveberry_consoleclient;
+
+import grooveberry_consoleclient.client.net.ClientTreatment;
+import grooveberry_consoleclient.client.net.FileDownload;
+import grooveberry_consoleclient.client.net.FileUpload;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,17 +18,14 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import grooveberry_server.audiofile.AudioFile;
-import grooveberry_server.client.net.ClientTreatment;
-import grooveberry_server.client.net.FileDownload;
-import grooveberry_server.client.net.FileUpload;
-import grooveberry_server.util.XMLDocBuilder;
-
 
 public class ClientApp {
+	public static final int SERVER_COMMANDE_PORT = 2009;
+	public static final int SERVER_TRANSFERT_PORT = 3009;
+	
 	public static void main(String[] args) {		
 		try {
-			Socket socketCommande = new Socket(InetAddress.getLocalHost(), ServerApp.SERVER_COMMANDE_PORT);
+			Socket socketCommande = new Socket(InetAddress.getLocalHost(), ClientApp.SERVER_COMMANDE_PORT);
 			
 			PipedOutputStream commandeOutput = new PipedOutputStream();
 			PipedInputStream  fileInput  = new PipedInputStream(commandeOutput);
@@ -47,7 +48,7 @@ public class ClientApp {
                 System.out.println("ERREUR");
             }
 			
-			Socket socketFile = new Socket(InetAddress.getLocalHost(), ServerApp.SERVER_TRANSFERT_PORT);
+			Socket socketFile = new Socket(InetAddress.getLocalHost(), ClientApp.SERVER_TRANSFERT_PORT);
 			if (socketFile.isConnected() && socketFile.isBound()) {
 				System.out.print("[System] Init thread download... ");
 				ObjectInputStream fileIn = new ObjectInputStream(socketFile.getInputStream());
