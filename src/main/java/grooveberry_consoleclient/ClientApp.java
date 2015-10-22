@@ -4,19 +4,14 @@ import grooveberry_consoleclient.client.net.ClientTreatment;
 import grooveberry_consoleclient.client.net.FileDownload;
 import grooveberry_consoleclient.client.net.FileUpload;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
-import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class ClientApp {
